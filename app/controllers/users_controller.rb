@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  before_action :admin_user, except: [:index, :show]
   def index
-    @users = User.where.not(:id => current_user.id)
+      @users = User.where.not(:id => current_user.id)
   end
 
   # GET /products/1
@@ -49,7 +50,12 @@ class UsersController < ApplicationController
   end 
   private
 
+  # Confirms an admin user.
+  def admin_user
+    redirect_back(fallback_location: root_path) unless current_user.admin?
+  end
+
   def user_params
-     params.require(:user).permit(:email, :password, :password_confirmation)
+     params.require(:user).permit(:email, :password, :password_confirmation, :admin)
   end
 end
