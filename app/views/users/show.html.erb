@@ -2,5 +2,17 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
+<p>
+  <strong>Deleted At:</strong>
+  <%= @user.deleted_at %>
+</p>
+<p>
+  <strong>Updated At:</strong>
+  <%= @user.updated_at %>
+</p>
+<p>
+  <strong>Created At:</strong>
+  <%= @user.created_at %>
+</p>
 
 <%= link_to 'Back', users_path %>

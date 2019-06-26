@@ -24,6 +24,11 @@
     <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <%= form.label :deleted_at %><br />
+    <%= datetime_local_field(:user, :deleted_at) %>
+  </div>
+
   <div class="actions">
     <%= form.submit "Update" %>
   </div>
