@@ -1,18 +1,38 @@
-<%= form_with model: @user, local: true do |form| %>
+<%= form_with model: @user, local: true do |f| %>
 
   <div class="field">
-    <%= form.label :email %><br />
-    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label "Admin" %> <br />
-    <%= form.check_box :admin %> <br />
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :middle_name %><br />
+    <%= f.text_field :middle_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Admin" %> <br />
+    <%= f.check_box :admin %> <br />
 </div>
 
   <div class="field">
-    <%= form.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= form.password_field :password, autocomplete: "new-password" %>
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
@@ -20,16 +40,16 @@
   </div>
 
   <div class="field">
-    <%= form.label :password_confirmation %><br />
-    <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= form.label :deleted_at %><br />
+    <%= f.label :deleted_at %><br />
     <%= datetime_local_field(:user, :deleted_at) %>
   </div>
 
   <div class="actions">
-    <%= form.submit "Update" %>
+    <%= f.submit "Update" %>
   </div>
 <% end %>
