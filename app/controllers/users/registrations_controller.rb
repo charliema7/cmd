@@ -42,7 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -63,4 +63,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def update_resource(resource, params)
+    # Require current password if user is trying to change password.
+    return super if params["password"]&.present?
+
+    # Allows user to update registration information without password.
+    resource.update_without_password(params.except("current_password"))
+  end
 end

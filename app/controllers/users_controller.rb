@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :admin_user, except: [:index, :show]
   def index
-      @users = User.where.not(:id => current_user.id)
+    @users = User.where.not(:id => current_user.id)
   end
 
   # GET /products/1
