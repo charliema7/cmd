@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.destroy
       flash[:notice] = "Successfully deleted User."
-      redirect_to root_path
+      redirect_back(fallback_location: root_path)
     end
   end 
   private
