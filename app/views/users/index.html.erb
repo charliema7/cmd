@@ -8,6 +8,8 @@
       <th>Created At</th>
       <th>Deleted At</th>
       <th>Invited By</th>
+      <th>Confirmed At</th>
+      <th>Confirmation Sent At</th>
       <% if current_user.admin? %>
         <th colspan="3"></th>
       <% else %>
@@ -25,6 +27,8 @@
         <td><%= user.created_at %></td>
         <td><%= user.deleted_at %></td>
         <td><%= user.invited_by&.email %></td>
+        <td><%= user.confirmed_at %></td>
+        <td><%= user.confirmation_sent_at %></td>
         <td><%= link_to 'Show', user %></td>
       <% if current_user.admin? %>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>

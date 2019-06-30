@@ -3,7 +3,15 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :trackable
+         :trackable, :confirmable
+
+  has_many :invitations, class_name: self.to_s, as: :invited_by
+
+  validates :first_name, :last_name, presence: true, if: :invite_accepted?
+
+  def invite_accepted?
+    invitation_accepted_at != nil
+  end
 
   # instead of deleting, indicate the user requested a delete & timestamp it  
   def soft_delete

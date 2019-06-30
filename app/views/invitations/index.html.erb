@@ -1,7 +1,7 @@
 <h1>Invitations</h1>
 <%= link_to 'Invite User', new_user_invitation_path %>
 
-<h2>Pending Users</h2>
+<h2>Pending Users (<%= @pending_users.count%>)</h2>
 <table>
   <thead>
     <tr>
@@ -29,10 +29,10 @@
         <td><%= user.deleted_at %></td>
         <td><%= user.invited_by.email %></td>
         <td><%= user.invitation_created_at %></td>
+        <td><%= link_to 'Resend Invite', resend_invitation_path(user) %></td>
         <td><%= link_to 'Show', user %></td>
       <% if current_user.admin? %>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Resend Invite', resend_invitation_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
       </tr>
@@ -40,7 +40,7 @@
   </tbody>
 </table>
 
-<h2>Accepted Users</h2>
+<h2>Accepted Users (<%= @accepted_users.count%>)</h2>
 <table>
   <thead>
     <tr>

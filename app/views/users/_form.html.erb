@@ -2,33 +2,73 @@
 
   <div class="field">
     <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title, autocomplete: "honorific-prefix" %>
   </div>
 
   <div class="field">
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, autocomplete: "given-name" %>
   </div>
 
   <div class="field">
     <%= f.label :middle_name %><br />
-    <%= f.text_field :middle_name %>
+    <%= f.text_field :middle_name, autocomplete: "additional-name" %>
   </div>
 
   <div class="field">
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, autocomplete: "family-name" %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email %>
+    <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
   <div class="field">
+    <%= f.label :cell_phone %><br />
+    <%= f.text_field :cell_phone, autocomplete: "tel" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :secondary_phone %><br />
+    <%= f.text_field :secondary_phone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fax %><br />
+    <%= f.text_field :fax %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :street %><br />
+    <%= f.text_field :street, autocomplete: "street-address" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city, autocomplete: "address-level2" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label "State / Province" %><br />
+    <%= f.text_field :province, autocomplete: "address-level1" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label "Zip / Postal Code" %><br />
+    <%= f.text_field :postal, autocomplete: "postal-code" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :country %><br />
+    <%= f.text_field :country, autocomplete: "country-name" %>
+  </div>
+  
+  <div class="field">
     <%= f.label "Admin" %> <br />
     <%= f.check_box :admin %> <br />
-</div>
+  </div>
 
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
