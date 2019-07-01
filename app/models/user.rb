@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable, :confirmable
 
+  has_many :login_activities, as: :user # use :user no matter what your model name
   has_many :invitations, class_name: self.to_s, as: :invited_by
 
   validates :first_name, :last_name, presence: true, if: :invite_accepted?

@@ -1,0 +1,50 @@
+<h1>Login Activities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Scope</th>
+      <th>Strategy</th>
+      <th>Identity</th>
+      <th>Success</th>
+      <th>Failure reason</th>
+      <th>User type</th>
+      <th>User id</th>
+      <th>Context</th>
+      <th>Ip</th>
+      <th>User agent</th>
+      <th>Referrer</th>
+      <th>City</th>
+      <th>Region</th>
+      <th>Country</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Created at</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @login_activities.each do |login_activity| %>
+      <tr>
+      	<td><%= login_activity.scope %></td>
+      	<td><%= login_activity.strategy %></td>
+      	<td><%= login_activity.identity %></td>
+      	<td><%= login_activity.success %></td>
+      	<td><%= login_activity.failure_reason %></td>
+      	<td><%= login_activity.user_type %></td>
+      	<td><%= login_activity.user_id %></td>
+      	<td><%= login_activity.context %></td>
+      	<td><%= login_activity.ip %></td>
+      	<td><%= login_activity.user_agent %></td>
+      	<td><%= login_activity.referrer %></td>
+      	<td><%= login_activity.city %></td>
+      	<td><%= login_activity.region %></td>
+      	<td><%= login_activity.country %></td>
+      	<td><%= login_activity.latitude %></td>
+      	<td><%= login_activity.longitude %></td>
+      	<td><%= login_activity.created_at %></td>
+        <td><%= link_to 'Show', login_activity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

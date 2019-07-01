@@ -63,4 +63,36 @@
   <%= @user.created_at %>
 </p>
 
+<h2>Login Activities</h2>
+<table>
+  <thead>
+    <tr>
+      <th>identity</th>
+      <th>success</th>
+      <th>failure_reason</th>
+      <th>ip</th>
+      <th>user_agent</th>
+      <th>city</th>
+      <th>region</th>
+      <th>country</th>
+      <th>created_at</th>      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @login_activities.each do |login| %>
+      <tr>
+        <td><%= login.identity %></td>
+        <td><%= login.success %></td>
+        <td><%= login.failure_reason %></td>
+        <td><%= login.ip %></td>
+        <td><%= login.user_agent %></td>
+        <td><%= login.city %></td>
+        <td><%= login.region %></td>
+        <td><%= login.country %></td>
+        <td><%= login.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= link_to 'Back', users_path %>

@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   # GET /products/1.json
   def show
     @user = User.find(params[:id])
+    @login_activities = LoginActivity.where(identity: @user.email).order(created_at: :desc)
   end
 
   def new
