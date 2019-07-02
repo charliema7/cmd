@@ -5,6 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable, :confirmable
 
+  has_paper_trail ignore: [:current_sign_in_at, :last_sign_in_at,
+                           :current_sign_in_ip, :last_sign_in_ip,
+                           :sign_in_count], versions: {
+    scope: -> {order("id desc")}
+  }
+
   has_many :login_activities, as: :user # use :user no matter what your model name
   has_many :invitations, class_name: self.to_s, as: :invited_by
 
