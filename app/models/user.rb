@@ -7,7 +7,9 @@ class User < ApplicationRecord
 
   has_paper_trail ignore: [:current_sign_in_at, :last_sign_in_at,
                            :current_sign_in_ip, :last_sign_in_ip,
-                           :sign_in_count], versions: {
+                           :sign_in_count, :confirmation_token,
+                           :invitation_token, :unlock_token,
+                           :encrypted_password], versions: {
     scope: -> {order("id desc")}
   }
 

@@ -13,7 +13,7 @@
   	<% @user.versions.each do |version| %>
   	  <tr>
   	  	<td><%= version.created_at %></td>
-  	  	<td><%= version.whodunnit %></td>
+  	  	<td><%= version.actor&.first_name %> <%= version.actor&.last_name %></td>
         <td><%= version.event %></td>
   	  	<td>
           <table>

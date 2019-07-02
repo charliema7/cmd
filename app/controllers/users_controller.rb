@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @login_activities = LoginActivity.where(identity: @user.email).order(created_at: :desc)
+    @login_activities = LoginActivity.where(identity: @user.email)
   end
 
   def new
@@ -49,6 +49,7 @@ class UsersController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

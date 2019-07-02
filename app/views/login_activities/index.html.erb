@@ -9,7 +9,7 @@
       <th>Success</th>
       <th>Failure reason</th>
       <th>User type</th>
-      <th>User id</th>
+      <th>User Name</th>
       <th>Context</th>
       <th>Ip</th>
       <th>User agent</th>
@@ -32,7 +32,7 @@
       	<td><%= login_activity.success %></td>
       	<td><%= login_activity.failure_reason %></td>
       	<td><%= login_activity.user_type %></td>
-      	<td><%= login_activity.user_id %></td>
+      	<td><%= login_activity.user&.first_name %> <%= login_activity.user&.last_name %></td>
       	<td><%= login_activity.context %></td>
       	<td><%= login_activity.ip %></td>
       	<td><%= login_activity.user_agent %></td>
