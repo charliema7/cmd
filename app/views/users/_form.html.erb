@@ -89,6 +89,11 @@
     <%= datetime_local_field(:user, :deleted_at) %>
   </div>
 
+  <div class="field">
+    <%= f.label :disabled %><br />
+    <%= f.check_box :disabled %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

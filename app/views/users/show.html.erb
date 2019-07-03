@@ -51,8 +51,27 @@
   <%= @user.country %>
 </p>
 <p>
+  <strong>Confirmed at:</strong>
+  <%= @user.confirmed_at %>
+</p>
+<p>
+  <strong>Confirmation Sent At:</strong>
+  <%= @user.confirmation_sent_at %>
+</p><p>
   <strong>Deleted At:</strong>
   <%= @user.deleted_at %>
+</p>
+<p>
+  <strong>Invitation Created At:</strong>
+  <%= @user.invitation_created_at %>
+</p>
+<p>
+  <strong>Invitation Sent At:</strong>
+  <%= @user.invitation_sent_at %>
+</p>
+<p>
+  <strong>Invitation Accepted At:</strong>
+  <%= @user.invitation_accepted_at %>
 </p>
 <p>
   <strong>Updated At:</strong>
@@ -61,6 +80,11 @@
 <p>
   <strong>Created At:</strong>
   <%= @user.created_at %>
+</p>
+
+<p>
+  <strong>Disabled:</strong>
+  <%= @user.disabled %>
 </p>
 
 <%= render "login_activities" %>

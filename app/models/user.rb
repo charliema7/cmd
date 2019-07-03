@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :trackable, :confirmable
+         :trackable, :confirmable, :lockable
 
   has_paper_trail ignore: [:current_sign_in_at, :last_sign_in_at,
                            :current_sign_in_ip, :last_sign_in_ip,
@@ -29,11 +29,17 @@ class User < ApplicationRecord
   
   # ensure user account is active  
   def active_for_authentication?
-    super && !deleted_at
+    super && !deleted_at && !disabled
   end
   
   # provide a custom message for a deleted account
   def inactive_message
-    !deleted_at ? super : :deleted_account
+    if deleted_at
+      :deleted_account
+    elsif disabled
+      :disabled_account
+    else
+      super
+    end
   end
 end

@@ -48,7 +48,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Successfully deleted User."
       redirect_back(fallback_location: root_path)
     end
-  end 
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -65,6 +65,6 @@ class UsersController < ApplicationController
                                     :admin, :deleted_at, :title, :first_name, 
                                     :middle_name, :last_name, :cell_phone, 
                                     :secondary_phone, :fax, :street, :city, 
-                                    :province, :postal, :country)
+                                    :province, :postal, :country, :disabled)
     end
 end
