@@ -5,9 +5,13 @@ class Users::InvitationsController < Devise::InvitationsController
     super
   end
 
+  def after_invite_path_for(resource)
+    invitations_path
+  end
+
   protected
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:accept_invitation, keys: [:first_name, :last_name])
-  end
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:accept_invitation, keys: [:first_name, :last_name])
+    end
 end
