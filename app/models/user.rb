@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  before_validation :set_default_user_type
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
@@ -15,6 +17,7 @@ class User < ApplicationRecord
 
   has_many :login_activities, as: :user # use :user no matter what your model name
   has_many :invitations, class_name: self.to_s, as: :invited_by
+  belongs_to :user_type
 
   validates :first_name, :last_name, presence: true, if: :invite_accepted?
 
@@ -41,5 +44,11 @@ class User < ApplicationRecord
     else
       super
     end
+  end
+
+  private
+
+  def set_default_user_type
+    self.user_type ||= UserType.find_by_name('Patient')
   end
 end

@@ -63,6 +63,7 @@ class UsersController < ApplicationController
                                     :admin, :deleted_at, :title, :first_name, 
                                     :middle_name, :last_name, :cell_phone, 
                                     :secondary_phone, :fax, :street, :city, 
-                                    :province, :postal, :country, :disabled)
+                                    :province, :postal, :country, :disabled, 
+                                    :user_type_id)
     end
 end

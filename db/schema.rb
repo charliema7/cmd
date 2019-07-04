@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_03_035053) do
+ActiveRecord::Schema.define(version: 2019_07_03_201644) do
 
   create_table "login_activities", force: :cascade do |t|
     t.string "scope"
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 2019_07_03_035053) do
     t.index ["identity"], name: "index_login_activities_on_identity"
     t.index ["ip"], name: "index_login_activities_on_ip"
     t.index ["user_type", "user_id"], name: "index_login_activities_on_user_type_and_user_id"
+  end
+
+  create_table "user_types", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_user_types_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,6 +85,7 @@ ActiveRecord::Schema.define(version: 2019_07_03_035053) do
     t.integer "invited_by_id"
     t.integer "invitations_count", default: 0
     t.boolean "disabled"
+    t.integer "user_type_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
@@ -86,6 +94,7 @@ ActiveRecord::Schema.define(version: 2019_07_03_035053) do
     t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+    t.index ["user_type_id"], name: "index_users_on_user_type_id"
   end
 
   create_table "versions", force: :cascade do |t|

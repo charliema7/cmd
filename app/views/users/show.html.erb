@@ -1,4 +1,8 @@
 <p>
+  <strong>User Type:</strong>
+  <%= @user.user_type.name%>
+</p>
+<p>
   <strong>Title:</strong>
   <%= @user.title %>
 </p>
@@ -86,6 +90,10 @@
   <strong>Disabled:</strong>
   <%= @user.disabled %>
 </p>
+
+<% if @user.user_type_id? %>
+  <%= render "#{@user.user_type.name.parameterize}" rescue nil %>
+<% end %>
 
 <%= render "login_activities" %>
 <%= render "versions" %>

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  # get 'login_activities/index'
-  # get 'login_activities/show'
+  resources :user_types
   devise_for :users, :controllers => { :registrations => 'users/registrations',
                                         invitations: 'users/invitations' }
   resources :users
