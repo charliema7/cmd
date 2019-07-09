@@ -3,14 +3,15 @@
 <table>
   <thead>
     <tr>
-      <th>Scope</th>
-      <th>Strategy</th>
-      <th>Identity</th>
-      <th>Success</th>
+      <% if current_user.admin? %>
+        <th>Scope</th>
+        <th>Strategy</th>
+        <th>Identity</th>
+      <% end %>
+      <th>Status</th>
       <th>Failure reason</th>
       <th>User type</th>
       <th>User name</th>
-      <th>Context</th>
       <th>Ip</th>
       <th>User agent</th>
       <th>Referrer</th>
@@ -26,14 +27,15 @@
   <tbody>
     <% @login_activities.each do |login| %>
       <tr>
-      	<td><%= login.scope %></td>
-      	<td><%= login.strategy %></td>
-      	<td><%= login.identity %></td>
-      	<td><%= login.success %></td>
+        <% if current_user.admin? %>
+        	<td><%= login.scope %></td>
+        	<td><%= login.strategy %></td>
+        	<td><%= login.identity %></td>
+        <% end %>
+      	<td><%= login.success? ? "Success" : "Failure" %></td>
       	<td><%= login.failure_reason %></td>
       	<td><%= login.user_type %></td>
       	<td><%= login.user&.first_name %> <%= login.user&.last_name %></td>
-      	<td><%= login.context %></td>
       	<td><%= login.ip %></td>
       	<td><%= login.user_agent %></td>
       	<td><%= login.referrer %></td>

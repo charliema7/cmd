@@ -1,14 +1,25 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :admin_user, except: [:index, :show]
+  before_action :set_patients, only: [:index, :show]
   def index
-    @users = User.where.not(:id => current_user.id)
+    if current_user.user_type.name == "Patient"
+      @users = User.where.not(id: current_user) - @patients
+    else
+      @users = User.where.not(id: current_user)
+    end
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
-    @login_activities = LoginActivity.where(identity: @user.email)
+    if current_user.user_type.name == "Patient" && @user.user_type.name == "Patient"
+      flash[:notice] = "User does not exist."
+      redirect_back(fallback_location: root_path)
+    else
+      @login_activities = LoginActivity.where(identity: @user.email)
+    end
+    
   end
 
   def new
@@ -52,6 +63,10 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def set_patients
+      @patients = User.joins(:user_type).where(user_types: {name: 'Patient'})
     end
     # Confirms an admin user.
     def admin_user

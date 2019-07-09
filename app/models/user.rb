@@ -5,7 +5,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :trackable, :confirmable, :lockable
+         :trackable#, :confirmable, :lockable
 
   has_paper_trail ignore: [:current_sign_in_at, :last_sign_in_at,
                            :current_sign_in_ip, :last_sign_in_ip,
@@ -15,11 +15,28 @@ class User < ApplicationRecord
     scope: -> {order("id desc")}
   }
 
+  acts_as_messageable
+
   has_many :login_activities, as: :user # use :user no matter what your model name
   has_many :invitations, class_name: self.to_s, as: :invited_by
   belongs_to :user_type
 
   validates :first_name, :last_name, presence: true, if: :invite_accepted?
+
+  #Returning any kind of identification you want for the model
+  def name
+    first_name.to_s + " " + last_name.to_s + "(" + email.to_s + ")"
+  end
+
+  #Returning the email address of the model if an email should be sent for this object (Message or Notification).
+  #If no mail has to be sent, return nil.
+  def mailboxer_email(object)
+    #Check if an email should be sent for that object
+    #if true
+    self.email
+    #if false
+    #return nil
+  end
 
   def invite_accepted?
     invitation_accepted_at != nil
