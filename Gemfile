@@ -40,6 +40,7 @@ gem 'devise'
 gem 'devise_invitable', '~> 2.0.0'
 gem 'authtrail'
 gem 'maxminddb'
+gem 'browser', require: "browser/browser"
 gem 'paper_trail'
 gem 'paper_trail-globalid'
 
