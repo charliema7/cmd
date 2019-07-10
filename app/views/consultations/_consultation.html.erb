@@ -1,0 +1,9 @@
+<tr id="<%= consultation.id %>">
+  <td><%= consultation.user.name %></td>
+  <td><%= consultation.description %></td>
+  <td><%= consultation.started_at %></td>
+  <td><%= consultation.ended_at %></td>
+  <td><%= link_to 'Show', consultation %></td>
+  <td><%= link_to 'Edit', edit_consultation_path(consultation) %></td>
+  <td><%= link_to 'Destroy', consultation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

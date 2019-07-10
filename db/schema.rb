@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_074554) do
+ActiveRecord::Schema.define(version: 2019_07_09_211033) do
+
+  create_table "consultations", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "description"
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_consultations_on_user_id"
+  end
 
   create_table "login_activities", force: :cascade do |t|
     t.string "scope"
