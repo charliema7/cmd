@@ -15,4 +15,3 @@ App.consultation = App.cable.subscriptions.create "ConsultationChannel",
         when "create" then document.getElementById("consultations-table").innerHTML += data.html
         when "update" then document.getElementById("#{data.id}").innerHTML = data.html
         when "destroy" then document.getElementById("#{data.id}").remove()
-        else break
